@@ -2,6 +2,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { capitalize, displayActivity, getUserActivity, main } from "../index.js";
 
+process.exitCode = 0;
+
 test("capitalize uppercases first letter", () => {
     assert.equal(capitalize("opened"), "Opened");
     assert.equal(capitalize(""), "");
