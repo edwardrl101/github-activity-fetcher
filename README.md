@@ -1,6 +1,6 @@
 # Github Activity Fetcher
 
-Welcome to `github-activity-fetcher` (as part of roadmap.sh project: https://roadmap.sh/projects/task-tracker), your intelligent command-line interface (CLI) assistant to help you fetch your GitHub activities!
+Welcome to `github-activity-fetcher` (as part of roadmap.sh project: https://roadmap.sh/projects/github-user-activity), your intelligent command-line interface (CLI) assistant to help you fetch your GitHub activities!
 
 ## Table of Contents
 - [Quick Setup in VS Code](#quick-setup-in-vs-code)
