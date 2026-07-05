@@ -4,22 +4,39 @@ function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-async function getUserActivity(username){
+async function fetchGitHub(url) {
     try {
-        const response = await fetch(`https://api.github.com/users/${username}/events`);
+        const response = await fetch(url);
 
-        if(!response.ok) {
-            throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
 
-        const data = await response.json();
-        return data;
+        return await response.json();
     } catch (error) {
-        throw new Error(`Error fetching data: ${error.message}`, { cause: error });
+        throw new Error(`Error fetching data: ${error.message}`, {cause: error});
     }
 }
 
+async function getUserInfo(username){
+    return fetchGitHub(`https://api.github.com/users/${username}`);
+}
+
+async function getUserActivity(username){
+    return fetchGitHub(`https://api.github.com/users/${username}/events`);
+}
+
+function displayUser(user) {
+    console.log("User Info\n")
+    console.log(user.login);
+    console.log(`Followers: ${user.followers}`);
+    console.log(`Following: ${user.following}`);
+    console.log(`Public Repos: ${user.public_repos}`);
+}
+
 function displayActivity(events) {
+    console.log("Recent Activity");
+    console.log("---------");
     events.forEach((event) => {
         let action;
         switch(event.type) {
@@ -70,7 +87,13 @@ async function main() {
         throw new Error("Usage: github-activity <username>");
     }
 
-    const events = await getUserActivity(username);
+    const [user, events] = await Promise.all([
+        getUserInfo(username),
+        getUserActivity(username)
+    ]);
+
+    displayUser(user);
+    console.log("");
     displayActivity(events);
     } catch(err) {
         process.exitCode = 1;

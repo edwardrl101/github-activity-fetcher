@@ -43,10 +43,19 @@ Example: `github-activity edwardrl101`
 
 Expected Output:
 ```angular2html
-    - Pushed to edwardrl101/github-activity-fetcher
-    - Created branch main in edwardrl101/github-activity-fetcher
-    - Pushed to edwardrl101/task-tracker-cli
-    - Made edwardrl101/task-tracker-cli public
+User Info
+
+edwardrl101
+Followers: 0
+Following: 0
+Public Repos: 20
+
+Recent Activity
+---------
+- Pushed to edwardrl101/github-activity-fetcher
+- Pushed to edwardrl101/github-activity-fetcher
+- Created branch main in edwardrl101/github-activity-fetcher
+- Pushed to edwardrl101/task-tracker-cli
 ```
 
 
