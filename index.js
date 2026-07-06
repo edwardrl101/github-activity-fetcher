@@ -1,4 +1,16 @@
 #!/usr/bin/env node
+import express from 'express';
+
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
 
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
